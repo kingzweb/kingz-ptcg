@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KINGZ PTCG — PSA 10 頂級鑑定卡及收藏專門店</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Noto Sans TC"', 'sans-serif'],
+          },
+          colors: {
+            vault: {
+              dark: '#090D16',
+              navy: '#111827',
+              card: '#1E293B',
+              gold: '#F59E0B',
+              amber: '#D97706',
+              crimson: '#DC2626'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .slab-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.24s ease, border-color 0.24s ease;
+    }
+    .slab-card:hover {
+      transform: translateY(-5px);
+      border-color: #F59E0B;
+      box-shadow: 0 18px 36px -10px rgba(245, 158, 11, 0.18);
+    }
+    .psa-label-border {
+      box-shadow: inset 0 0 0 2px #DC2626;
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    .animate-slide-in {
+      animation: slideInRight 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.24s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Top Collector Guarantee Banner -->
+  <div class="bg-gradient-to-r from-vault-dark via-slate-900 to-amber-950 text-white text-xs sm:text-sm py-2 px-3 sm:px-4 text-center font-medium border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-black bg-amber-400 text-slate-950 uppercase tracking-wider shrink-0">PSA 10 認證</span>
+      <span class="truncate">全部鑑定卡均附原裝保護殼，支援香港面交驗卡或順豐保價速遞。</span>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-40 bg-vault-dark/95 backdrop-blur-md border-b border-slate-800 text-white shadow-xl shadow-slate-950/25">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Brand Identity -->
+      <a href="#" onclick="resetFilters(); return false;" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-amber-400 via-yellow-500 to-red-600 p-0.5 shadow-lg shadow-amber-500/20 shrink-0">
+          <div class="w-full h-full bg-vault-dark rounded-[10px] flex items-center justify-center overflow-hidden">
+            <img
+              id="brandLogoImg"
+              data-gdrive-id="12-efggdI4rcp9vswiIIfVtHoj9ogq0bW"
+              src="https://drive.google.com/thumbnail?id=12-efggdI4rcp9vswiIIfVtHoj9ogq0bW&sz=w400"
+              alt="Kingz PTCG Logo"
+              class="w-full h-full object-contain"
+              onerror="handleSmartImgError(this)"
+            />
+            <svg viewBox="0 0 64 64" class="w-7 h-7 sm:w-8 sm:h-8 hidden fallback-graphic">
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#F59E0B" stroke-width="4"/>
+              <path d="M6 32 H22 M42 32 H58" stroke="#EF4444" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="32" cy="32" r="9" fill="#FDE047" stroke="#F59E0B" stroke-width="3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-lg sm:text-2xl font-black tracking-tight text-white">KINGZ PTCG</span>
+            <span class="inline-block text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/30">VAULT</span>
+          </div>
+          <div id="syncStatusBadge" class="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-emerald-400 font-semibold leading-tight mt-0.5 truncate">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span class="truncate">官方認證現貨目錄 · 共 17 款鑑定卡</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Search Bar -->
+      <div class="hidden md:flex flex-1 max-w-md mx-3">
+        <div class="relative w-full">
+          <input
+            type="text"
+            id="desktopSearchInput"
+            oninput="handleSearch(this.value)"
+            placeholder="搜尋卡名、卡號或系列 (例: Poncho, Luigi, #208, Van Gogh)..."
+            class="w-full bg-slate-900/90 border border-slate-700 text-white placeholder-slate-400 text-sm rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+          />
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Right Action Buttons -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button
+          onclick="syncCatalogSilently(true)"
+          title="立即從 Google Sheet 同步最新鑑定卡與圖片"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:text-white bg-emerald-950/70 hover:bg-emerald-800/80 px-2.5 sm:px-3 py-2.5 rounded-xl border border-emerald-700/60 transition active:scale-95"
+        >
+          <svg id="syncBtnIcon" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          <span class="hidden sm:inline">同步庫存</span>
+        </button>
+
+        <button
+          onclick="toggleCartDrawer(true)"
+          class="relative inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm px-3 sm:px-4 py-2.5 rounded-xl shadow-lg shadow-amber-500/25 transition active:scale-95"
+        >
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+          </svg>
+          <span>購物車</span>
+          <span id="cartBadge" class="bg-slate-950 text-amber-400 text-[11px] sm:text-xs font-black px-1.5 sm:px-2 py-0.5 rounded-full min-w-[20px] sm:min-w-[22px] text-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative bg-vault-navy text-white overflow-hidden border-b border-slate-800">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-24 -right-16 w-[420px] h-[420px] bg-amber-500/15 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-24 -left-16 w-[420px] h-[420px] bg-red-600/15 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
+        <div class="lg:col-span-8 space-y-3.5">
+          <div class="inline-flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-full text-[11px] sm:text-xs font-extrabold bg-amber-500/15 text-amber-300 border border-amber-400/30 tracking-wide">
+              GRADED POKÉMON TCG COLLECTIBLES
+            </span>
+            <span class="px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-red-500/15 text-red-300 border border-red-400/30">
+              100% PSA 10 GEM MINT
+            </span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+            殿堂級 Pokémon 鑑定卡珍藏館
+          </h1>
+          <p class="text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed">
+            嚴選 2015–2025 年日版及英文版頂級紀念 Promo 與高罕見度 <strong class="text-amber-400 font-extrabold">PSA 10 滿分鑑定卡</strong>，涵蓋披風比卡超 (Poncho-Wearing Pikachu)、路易吉比卡超、吶喊伊布、橫濱限定及梵高比卡超。
+          </p>
+        </div>
+
+        <!-- Quick Vault Highlight Card -->
+        <div class="lg:col-span-4 bg-slate-900/90 backdrop-blur-md border border-amber-500/30 rounded-2xl p-4 sm:p-5 shadow-2xl">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2.5 mb-2.5">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-amber-400">殿堂級焦點藏品</span>
+            <span class="text-[11px] text-slate-400 font-bold">HKD 實價</span>
+          </div>
+          <ul class="space-y-1.5 text-xs">
+            <li onclick="quickSearch('PONCHO-WEAR')" class="cursor-pointer flex justify-between items-center py-1 px-1.5 rounded hover:bg-slate-800 transition">
+              <span class="text-slate-200 font-semibold truncate pr-2">Poncho-Wear. Pikachu #207</span>
+              <span class="font-extrabold text-amber-400 shrink-0">$188,888</span>
+            </li>
+            <li onclick="quickSearch('LUIGI')" class="cursor-pointer flex justify-between items-center py-1 px-1.5 rounded hover:bg-slate-800 transition">
+              <span class="text-slate-200 font-semibold truncate pr-2">FA/Luigi Pikachu #296</span>
+              <span class="font-extrabold text-amber-400 shrink-0">$168,888</span>
+            </li>
+            <li onclick="quickSearch('EEVEE MUNCH')" class="cursor-pointer flex justify-between items-center py-1 px-1.5 rounded hover:bg-slate-800 transition">
+              <span class="text-slate-200 font-semibold truncate pr-2">Eevee Munch #287</span>
+              <span class="font-extrabold text-white shrink-0">$53,000</span>
+            </li>
+            <li onclick="quickSearch('VAN GOGH')" class="cursor-pointer flex justify-between items-center pt-1 px-1.5 rounded hover:bg-slate-800 transition">
+              <span class="text-slate-200 font-semibold truncate pr-2">Pikachu Van Gogh #085</span>
+              <span class="font-extrabold text-white shrink-0">$25,000</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Filter Bar -->
+  <section class="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 space-y-2.5">
+      <!-- Era / Series Tabs -->
+      <div id="eraTabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-0.5">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Search & Sort Controls -->
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <!-- Mobile Search -->
+        <div class="relative w-full md:hidden">
+          <input
+            type="text"
+            id="mobileSearchInput"
+            oninput="handleSearch(this.value)"
+            placeholder="搜尋卡名、卡號 (#207) 或系列..."
+            class="w-full bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm rounded-xl pl-9 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          />
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+
+        <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 w-full md:w-auto">
+          <select id="seriesFilter" onchange="applyFilters()" class="w-full sm:w-auto bg-slate-50 border border-slate-200 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+            <option value="all">全部系列 / 年份</option>
+          </select>
+
+          <select id="sortFilter" onchange="applyFilters()" class="w-full sm:w-auto bg-slate-50 border border-slate-200 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500">
+            <option value="default">排序：預設年份順序</option>
+            <option value="desc">價格：由高至低 ($$$ → $)</option>
+            <option value="asc">價格：由低至高 ($ → $$$)</option>
+          </select>
+
+          <label class="w-full sm:w-auto inline-flex items-center justify-center sm:justify-start gap-2 cursor-pointer bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-100 transition select-none">
+            <input type="checkbox" id="inStockOnlyToggle" onchange="applyFilters()" class="accent-amber-500 w-4 h-4 rounded">
+            <span>只顯示現貨</span>
+          </label>
+
+          <button onclick="resetFilters()" class="w-full sm:w-auto text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 sm:bg-transparent px-2.5 py-2 rounded-xl hover:bg-slate-200/70 transition">
+            重設篩選
+          </button>
+        </div>
+
+        <div class="text-xs sm:text-sm text-slate-500 font-medium ml-auto">
+          共顯示 <span id="resultCount" class="font-black text-slate-900">17</span> 張鑑定卡
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Catalog Grid -->
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <div id="cardGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <!-- Cards injected by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200">
+      <h3 class="text-lg font-bold text-slate-900 mb-1">找不到符合條件的鑑定卡</h3>
+      <p class="text-sm text-slate-500 mb-4">請嘗試輸入其他關鍵字或重設篩選條件。</p>
+      <button onclick="resetFilters()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-sm font-extrabold px-5 py-2.5 rounded-xl transition">
+        顯示全部鑑定卡
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-vault-dark text-slate-400 border-t border-slate-800 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-2.5">
+        <span class="font-black text-white text-base tracking-tight">KINGZ PTCG</span>
+        <span class="text-slate-600">|</span>
+        <span>PSA 10 Graded Pokémon Card Vault</span>
+      </div>
+      <p class="text-center sm:text-right">所有鑑定卡均以港幣 (HKD) 結算 · 支援香港面交驗卡及順豐保價速遞。</p>
+    </div>
+  </footer>
+
+  <!-- Card Detail & Add to Cart Modal -->
+  <div id="cardModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl border border-slate-200 my-auto animate-fade-up">
+      <div class="bg-vault-dark text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span id="modalGradeBadge" class="text-[11px] font-black px-2.5 py-0.5 rounded bg-red-600 text-white tracking-wider">PSA 10</span>
+          <span id="modalCardNumBadge" class="text-xs font-mono text-amber-300">#203</span>
+        </div>
+        <button onclick="closeCardModal()" class="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="p-5 sm:p-6 space-y-5">
+        <div class="flex flex-col sm:flex-row items-center gap-5 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <div class="relative group shrink-0">
+            <div id="modalSlabPreview" onclick="openImageLightbox()" title="點擊放大檢視高清鑑定卡細節" class="w-44 h-64 flex items-center justify-center cursor-zoom-in transition-transform duration-200 group-hover:scale-[1.03]">
+              <!-- Slab visual -->
+            </div>
+            <button type="button" onclick="openImageLightbox()" class="mt-2 w-full inline-flex items-center justify-center gap-1.5 text-[11px] font-extrabold text-amber-800 bg-amber-100/90 hover:bg-amber-200 border border-amber-300/80 py-1.5 px-2.5 rounded-xl transition shadow-sm">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+              <span>點擊放大檢視細節</span>
+            </button>
+          </div>
+          <div class="text-center sm:text-left flex-1 space-y-2">
+            <span id="modalSeriesText" class="inline-block text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg bg-slate-900 text-amber-300">SERIES</span>
+            <h3 id="modalCardName" class="text-lg sm:text-xl font-black text-slate-900 leading-snug">Card Name</h3>
+            <div class="pt-1">
+              <span class="text-xs text-slate-500 block">收藏售價 (HKD)</span>
+              <span id="modalCardPrice" class="text-2xl sm:text-3xl font-black text-slate-900">$24,000</span>
+            </div>
+            <div id="modalStockBadge" class="pt-1"></div>
+          </div>
+        </div>
+
+        <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-3.5 text-xs text-amber-950 space-y-1">
+          <div class="font-extrabold">交收及保護保障：</div>
+          <p>每張 PSA 鑑定卡均附獨立防護卡套，確認訂單後專人將透過 WhatsApp 與您核對證書編號及安排交收。</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 border-t border-slate-200 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <button onclick="closeCardModal()" class="w-full sm:w-auto px-5 py-3 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-200/70 transition">
+          返回目錄
+        </button>
+        <button id="modalAddBtn" onclick="confirmAddCardToCart()" class="w-full sm:w-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm px-7 py-3 rounded-xl shadow-lg shadow-amber-500/25 transition active:scale-95 flex items-center justify-center gap-2">
+          <span>加入購物車</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Fullscreen High-Res Image Lightbox & Zoom Viewer -->
+  <div id="imageLightbox" class="fixed inset-0 z-[60] hidden flex-col bg-slate-950/95 backdrop-blur-md select-none">
+    <!-- Top Control Bar -->
+    <div class="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-slate-900/90 border-b border-slate-800 text-white shrink-0 z-10">
+      <div class="min-w-0 pr-3">
+        <div class="flex items-center gap-2">
+          <span id="lightboxGradeBadge" class="text-[10px] font-black px-2 py-0.5 rounded bg-red-600 text-white">PSA 10</span>
+          <span id="lightboxNumBadge" class="text-xs font-mono text-amber-400">#296</span>
+          <span id="lightboxZoomLevel" class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-700/60 px-2 py-0.5 rounded">100%</span>
+        </div>
+        <h4 id="lightboxCardTitle" class="text-xs sm:text-sm font-bold text-slate-200 truncate mt-1">Card Title</h4>
+      </div>
+
+      <!-- Zoom Controls -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button type="button" onclick="adjustLightboxZoom(-0.5)" title="縮小 (-)" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition active:scale-95">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM7 10h6"></path></svg>
+        </button>
+        <button type="button" onclick="resetLightboxZoom()" title="重設大小 (100%)" class="px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-extrabold text-amber-300 border border-slate-700 transition active:scale-95">
+          1:1
+        </button>
+        <button type="button" onclick="adjustLightboxZoom(0.5)" title="放大 (+)" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition active:scale-95">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path></svg>
+        </button>
+        <div class="w-px h-6 bg-slate-700 mx-0.5"></div>
+        <button type="button" onclick="closeImageLightbox()" title="關閉預覽 (ESC)" class="p-2 rounded-xl bg-red-600/90 hover:bg-red-500 text-white transition active:scale-95">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Pan & Zoom Canvas -->
+    <div id="lightboxViewport" class="flex-1 relative overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing touch-none">
+      <div id="lightboxTransformWrap" class="transition-transform duration-150 ease-out origin-center flex items-center justify-center">
+        <img id="lightboxImg" src="" alt="High-Res PSA Card" class="max-h-[78vh] max-w-[90vw] object-contain rounded-xl shadow-2xl pointer-events-none" />
+        <div id="lightboxFallbackSlab" class="hidden pointer-events-none"></div>
+      </div>
+    </div>
+
+    <!-- Bottom Helper Bar -->
+    <div class="px-4 py-2.5 bg-slate-900/90 border-t border-slate-800 text-center text-[11px] sm:text-xs text-slate-400 shrink-0">
+      滾動滑鼠滾輪、雙指縮放或點擊「+ / -」按鈕可放大至 400% 檢視卡面與鑑定標籤細節；放大後可按住拖曳移動。
+    </div>
+  </div>
+
+  <!-- Slide-over Shopping Cart Drawer -->
+  <div id="cartDrawerOverlay" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm justify-end">
+    <div class="bg-white w-full max-w-lg h-full flex flex-col shadow-2xl animate-slide-in">
+      <div class="bg-vault-dark text-white px-6 py-4 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2.5">
+          <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <h3 class="text-lg font-black">鑑定卡購物車</h3>
+        </div>
+        <button onclick="toggleCartDrawer(false)" class="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
+        <!-- Order Confirmation Receipt -->
+        <div id="orderReceiptCard" class="hidden bg-emerald-50 border-2 border-emerald-400 rounded-2xl p-5 space-y-3 shadow-sm animate-fade-up">
+          <div class="flex items-center gap-2 text-emerald-800 font-black text-base">
+            <svg class="w-6 h-6 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>訂單已確認！已為您預留鑑定卡</span>
+          </div>
+          <pre id="orderReceiptText" class="text-xs text-slate-800 bg-white p-3.5 rounded-xl border border-emerald-200 whitespace-pre-wrap font-mono leading-relaxed"></pre>
+          <div class="flex justify-end">
+            <button onclick="copyOrderReceipt()" class="text-xs font-bold bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-xl transition">
+              複製訂單收據傳送給店主
+            </button>
+          </div>
+        </div>
+
+        <div id="cartItemsList" class="space-y-3"></div>
+
+        <!-- Customer Checkout Form -->
+        <div id="checkoutFormSection" class="hidden pt-4 border-t border-slate-200 space-y-4">
+          <h4 class="text-sm font-black text-slate-900">顧客交收聯絡資料</h4>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">聯絡人姓名 <span class="text-red-500">*</span></label>
+              <input type="text" id="custName" placeholder="例如：陳大文 / Chris" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">聯絡電話 (WhatsApp) <span class="text-red-500">*</span></label>
+              <input type="tel" id="custPhone" placeholder="例如：9123 4567" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">交收方式及備註</label>
+              <textarea id="custNote" rows="2" placeholder="例如：旺角 / 尖沙咀地鐵站面交，或順豐保價到付..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1.5">付款方式 <span class="text-red-500">*</span></label>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="selectPayment('VISA')" data-pay="VISA" data-icon-key="visa" class="pay-opt flex items-center gap-2 py-2 px-3 rounded-xl border-2 border-amber-500 bg-amber-50 text-slate-950 font-extrabold text-xs">
+                  <img data-gdrive-id="1vbXm8Fc-lTrcqgB-mpQivhrET6UExCX" src="https://drive.google.com/thumbnail?id=1vbXm8Fc-lTrcqgB-mpQivhrET6UExCX&sz=w200" alt="VISA" class="w-7 h-5 object-contain rounded bg-white p-0.5" onerror="this.style.display='none'" />
+                  <span>VISA</span>
+                </button>
+                <button type="button" onclick="selectPayment('Mastercard')" data-pay="Mastercard" data-icon-key="mastercard" class="pay-opt flex items-center gap-2 py-2 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-extrabold text-xs">
+                  <img data-gdrive-id="1I2ig_OqnOcm80xQUbieR0XqhI8D3gt" src="https://drive.google.com/thumbnail?id=1I2ig_OqnOcm80xQUbieR0XqhI8D3gt&sz=w200" alt="Mastercard" class="w-7 h-5 object-contain rounded bg-white p-0.5" onerror="this.style.display='none'" />
+                  <span>Mastercard</span>
+                </button>
+                <button type="button" onclick="selectPayment('PayMe')" data-pay="PayMe" data-icon-key="payme" class="pay-opt flex items-center gap-2 py-2 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-extrabold text-xs">
+                  <img data-gdrive-id="17eXR78RegLqBDuiky8D86EqCVXqoCF8" src="https://drive.google.com/thumbnail?id=17eXR78RegLqBDuiky8D86EqCVXqoCF8&sz=w200" alt="PayMe" class="w-7 h-5 object-contain rounded bg-white p-0.5" onerror="this.style.display='none'" />
+                  <span>PayMe</span>
+                </button>
+                <button type="button" onclick="selectPayment('轉數快 FPS')" data-pay="轉數快 FPS" data-icon-key="轉數快" class="pay-opt flex items-center gap-2 py-2 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-extrabold text-xs">
+                  <img data-gdrive-id="1dK2D9VFBClC1K8LhlxpdyKKbSMtoh1" src="https://drive.google.com/thumbnail?id=1dK2D9VFBClC1K8LhlxpdyKKbSMtoh1&sz=w200" alt="轉數快" class="w-7 h-5 object-contain rounded bg-white p-0.5" onerror="this.style.display='none'" />
+                  <span>轉數快 FPS</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cartDrawerFooter" class="hidden bg-slate-50 border-t border-slate-200 p-5 shrink-0 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-bold text-slate-600">訂單總金額 (HKD)</span>
+          <span id="cartTotalAmount" class="text-2xl font-black text-slate-900">$0</span>
+        </div>
+        <button id="submitOrderBtn" onclick="submitOrder()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm py-3.5 rounded-xl shadow-lg shadow-amber-500/25 transition active:scale-95">
+          確認送出訂單
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <script>
+    // =========================================================================
+    // 1. CLOUD API ENDPOINT & CATALOG DATA (MATCHING YOUR 17 PTCG CARDS)
+    // =========================================================================
+    // 【請將下方引號貼上您部署 ptcg-code.gs 後取得的 Web App 網址 (/exec)】
+    const PTCG_CLOUD_ENDPOINT = 'https://script.google.com/macros/s/AKfycby5GP13vm0inVJzY8rzPhr9eD7Nm7X3_wwXYVcvJl_KWOFTy1kirD-9O9vvuOaUIh6c/exec';
+
+    const INITIAL_PTCG_CARDS = [
+      { id: 'PTCG-001', series: '2015 P.M. JPN. XY PROMO', name: 'PONCHO-WEAR. PIKACHU PIKACHU MEGA CAMPAIGN', cardNumber: '#203', grade: 'PSA 10', price: 24000, imageUrl: 'https://drive.google.com/file/d/12TjjHlxHdA2hv48m6HnyC8RfpiS2zpqP/view?usp=sharing', stock: 1, theme: 'pikachu-gold' },
+      { id: 'PTCG-002', series: '2015 POKEMON JPN. 1ST ED.', name: 'PIKACHU EX LEGENDARY SHINE COLL.', cardNumber: '#008', grade: 'PSA 10', price: 13000, imageUrl: 'https://drive.google.com/file/d/1DF7ogXph4npZ3xO7IK-X1zton4Xh03/view?usp=sharing', stock: 1, theme: 'pikachu-gold' },
+      { id: 'PTCG-003', series: '2016 P.M. JPN. XY PROMO', name: 'FA/LUIGI PIKACHU LUIGI PIKACHU SPECIAL BOX', cardNumber: '#296', grade: 'PSA 10', price: 168888, imageUrl: 'https://drive.google.com/file/d/1xk2nyXIhNCtA6lqZYRDCmjeIqNkg0At/view?usp=sharing', stock: 1, theme: 'luigi-emerald' },
+      { id: 'PTCG-004', series: '2016 P.M. JPN. XY PROMO', name: 'PONCHO-WEAR. PIKACHU M.C. Y PIKACHU SPECIAL BOX', cardNumber: '#208', grade: 'PSA 10', price: 153888, imageUrl: 'https://drive.google.com/file/d/1jWimpySvIueAiHsC2LnQk9waxyHwgX5Y/view?usp=sharing', stock: 1, theme: 'charizard-crimson' },
+      { id: 'PTCG-005', series: '2016 P.M. JPN. XY PROMO', name: 'PONCHO-WEAR. PIKACHU M.C. Y PIKACHU SPECIAL BOX', cardNumber: '#207', grade: 'PSA 10', price: 188888, imageUrl: 'https://drive.google.com/file/d/1YLJ00ZRhotr8_aEZwXNeMa3M-q4vFF4r/view?usp=sharing', stock: 1, theme: 'charizard-crimson' },
+      { id: 'PTCG-006', series: '2018 P.M. JPN. SM PROMO', name: 'EEVEE MUNCH: A RETROSPECTIVE', cardNumber: '#287', grade: 'PSA 10', price: 53000, imageUrl: 'https://drive.google.com/file/d/1yWz9hcJkNfTYEvPmOf43stlmKmpjp-S/view?usp=sharing', stock: 1, theme: 'munch-amber' },
+      { id: 'PTCG-007', series: '2018 P.M. JPN. SM PROMO', name: "YOKOHAMA'S PIKACHU PKMN.CENTER YOKOHAMA", cardNumber: '#282', grade: 'PSA 10', price: 15000, imageUrl: 'https://drive.google.com/file/d/10sl_MqTe-esJwTktN2zT1RXfV58uAMTg8/view?usp=sharing', stock: 1, theme: 'yokohama-blue' },
+      { id: 'PTCG-008', series: '2018 P.M. JPN. SM PROMO', name: "Yokohama's Pikachu Near Mint", cardNumber: '#280', grade: 'PSA 10', price: 21000, imageUrl: 'https://drive.google.com/file/d/1c2955p3OvsIBMgSVInJ6DdYMuFYTLm1zk/view?usp=sharing', stock: 1, theme: 'yokohama-blue' },
+      { id: 'PTCG-009', series: '2018 P.M. JPN. SM PROMO', name: "YOKOHAMA'S PIKACHU P.M.CNTR.YOKOHAMA SP. BOX", cardNumber: '#281', grade: 'PSA 10', price: 18000, imageUrl: 'https://drive.google.com/file/d/1vecMWnjAOtFfKDG5k5JjJoudD2VBCzw/view?usp=sharing', stock: 1, theme: 'yokohama-blue' },
+      { id: 'PTCG-010', series: '2021 POKEMON JPN. S-P', name: 'FA/PIKACHU POKEMON STAMP BOX', cardNumber: '#227', grade: 'PSA 10', price: 25000, imageUrl: 'https://drive.google.com/file/d/1S2OcugV9ecuvbZM2b3vD7j92JsHrtUc/view?usp=sharing', stock: 1, theme: 'pikachu-gold' },
+      { id: 'PTCG-011', series: '2021 POKEMON JPN. S-P', name: 'FA/FLAREON VMAX SMR.PKMN.CARD CAMPAIGN', cardNumber: '#186', grade: 'PSA 10', price: 46000, imageUrl: 'https://drive.google.com/file/d/1mPUmCixO-2bBdBwcLK3prfmOZM-donDi/view?usp=sharing', stock: 1, theme: 'flareon-fire' },
+      { id: 'PTCG-012', series: '2021 POKEMON JPN. SWSH', name: 'FA/GENGAR VMAX GENGAR VMAX HIGH-CLS.DK.', cardNumber: '#020', grade: 'PSA 10', price: 22000, imageUrl: 'https://drive.google.com/file/d/139jVuylnMuI5QIN9QRK85QnpASLk_HI/view?usp=sharing', stock: 1, theme: 'gengar-purple' },
+      { id: 'PTCG-013', series: '2022 POKEMON JPN.SWSH', name: 'FA/GIRATINA V LOST ABYSS', cardNumber: '#111', grade: 'PSA 10', price: 16000, imageUrl: 'https://drive.google.com/file/d/12ZH9wYwSwm9Gv8QQgyWf3T4iU7bVVh/view?usp=sharing', stock: 1, theme: 'giratina-abyss' },
+      { id: 'PTCG-014', series: '2023 POKEMON SVP EN', name: 'PIKACHU/GREY FELT HAT POKEMON X VAN GOGH', cardNumber: '#085', grade: 'PSA 10', price: 25000, imageUrl: 'https://drive.google.com/file/d/1TZ1_8l2HSnCwPCvUuJQCBsnx_d4zuhi3/view?usp=sharing', stock: 1, theme: 'vangogh-teal' },
+      { id: 'PTCG-015', series: '2025 POKEMON 151 CS', name: 'PIKACHU ART RARE', cardNumber: '#171', grade: 'PSA 10', price: 13000, imageUrl: 'https://drive.google.com/file/d/15hkoCE74TKpTdvWBzs8kHLDvpydOw3rU/view?usp=sharing', stock: 1, theme: 'pikachu-gold' },
+      { id: 'PTCG-016', series: '2025 POKEMON SV11B JP', name: 'ZEKROM ex', cardNumber: '#174', grade: 'PSA 10', price: 13888, imageUrl: 'https://drive.google.com/file/d/1f9ZWabU4_E_8QxM03mczI7QLM6ewXcNV/view?usp=sharing', stock: 1, theme: 'zekrom-obsidian' },
+      { id: 'PTCG-017', series: '2025 POKEMON SV11W JP', name: 'RESHIRAM ex', cardNumber: '#174', grade: 'PSA 10', price: 13888, imageUrl: 'https://drive.google.com/file/d/1KLM34Jom0GDdDIOxcC5s_aa2hvaYRmw/view?usp=sharing', stock: 1, theme: 'reshiram-pearl' }
+    ];
+
+    // =========================================================================
+    // 2. APPLICATION STATE & SMART IMAGE PROXY ENGINE
+    // =========================================================================
+    let cards = JSON.parse(JSON.stringify(INITIAL_PTCG_CARDS));
+    let currentEra = 'all';
+    let searchQuery = '';
+    let activeCard = null;
+    let cart = [];
+    let selectedPayment = 'VISA';
+
+    const imageBase64Cache = new Map();
+    const imageFetchQueue = [];
+    const queuedFileIds = new Set();
+    let activeWorkers = 0;
+
+    function extractDriveId(url) {
+      if (!url) return '';
+      const trimmed = String(url).trim();
+      const m = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/) || trimmed.match(/lh3\.googleusercontent\.com\/d\/([a-zA-Z0-9_-]+)/);
+      return (m && m[1]) ? m[1] : '';
+    }
+
+    function enqueueDriveImageProxy(fileId) {
+      if (!fileId || !PTCG_CLOUD_ENDPOINT || imageBase64Cache.has(fileId) || queuedFileIds.has(fileId)) return;
+      queuedFileIds.add(fileId);
+      imageFetchQueue.push(fileId);
+      processImageProxyQueue();
+    }
+
+    async function processImageProxyQueue() {
+      if (activeWorkers >= 4 || imageFetchQueue.length === 0 || !PTCG_CLOUD_ENDPOINT) return;
+      const fileId = imageFetchQueue.shift();
+      activeWorkers++;
+      try {
+        const hit = sessionStorage.getItem(`ptcg_img_${fileId}`);
+        if (hit && hit.startsWith('data:image/')) {
+          imageBase64Cache.set(fileId, hit);
+          applyCachedImgToDom(fileId, hit);
+        } else {
+          const res = await fetch(`${PTCG_CLOUD_ENDPOINT}?action=img&id=${encodeURIComponent(fileId)}`);
+          const json = await res.json();
+          if (json && json.status === 'ok' && json.dataUrl) {
+            imageBase64Cache.set(fileId, json.dataUrl);
+            try { sessionStorage.setItem(`ptcg_img_${fileId}`, json.dataUrl); } catch (e) {}
+            applyCachedImgToDom(fileId, json.dataUrl);
+          }
+        }
+      } catch (err) {
+        console.warn('Image proxy error:', err);
+      } finally {
+        queuedFileIds.delete(fileId);
+        activeWorkers--;
+        processImageProxyQueue();
+      }
+    }
+
+    function applyCachedImgToDom(fileId, dataUrl) {
+      document.querySelectorAll(`img[data-gdrive-id="${fileId}"]`).forEach(img => {
+        img.src = dataUrl;
+        img.style.display = 'block';
+        const fb = img.parentElement ? img.parentElement.querySelector('.fallback-graphic') : null;
+        if (fb) fb.style.display = 'none';
+      });
+    }
+
+    function handleSmartImgError(img) {
+      const fileId = img.getAttribute('data-gdrive-id');
+      const stage = Number(img.getAttribute('data-retry-stage') || '0');
+      if (fileId) {
+        if (imageBase64Cache.has(fileId)) {
+          img.src = imageBase64Cache.get(fileId);
+          return;
+        }
+        enqueueDriveImageProxy(fileId);
+        if (stage === 0) {
+          img.setAttribute('data-retry-stage', '1');
+          img.src = `https://drive.google.com/uc?export=view&id=${fileId}`;
+          return;
+        }
+        if (stage === 1) {
+          img.setAttribute('data-retry-stage', '2');
+          img.src = `https://lh3.googleusercontent.com/d/${fileId}=w800`;
+          return;
+        }
+      }
+      img.style.display = 'none';
+      const fb = img.parentElement ? img.parentElement.querySelector('.fallback-graphic') : null;
+      if (fb) {
+        fb.style.display = 'flex';
+        fb.classList.remove('hidden');
+      }
+    }
+
+    // =========================================================================
+    // 3. PSA SLAB ARTWORK GENERATOR
+    // =========================================================================
+    function getThemeColors(theme) {
+      const map = {
+        'pikachu-gold': { bg: 'from-amber-400 via-yellow-500 to-amber-700', accent: '#FEF08A', icon: '⚡' },
+        'luigi-emerald': { bg: 'from-emerald-500 via-green-600 to-teal-900', accent: '#A7F3D0', icon: '🧢' },
+        'charizard-crimson': { bg: 'from-orange-500 via-red-600 to-slate-900', accent: '#FED7AA', icon: '🔥' },
+        'munch-amber': { bg: 'from-amber-600 via-orange-700 to-stone-900', accent: '#FDE68A', icon: '😱' },
+        'yokohama-blue': { bg: 'from-sky-400 via-blue-600 to-indigo-900', accent: '#BAE6FD', icon: '⚓' },
+        'flareon-fire': { bg: 'from-red-500 via-orange-600 to-amber-900', accent: '#FECACA', icon: '🔥' },
+        'gengar-purple': { bg: 'from-purple-600 via-violet-800 to-slate-950', accent: '#DDD6FE', icon: '👻' },
+        'giratina-abyss': { bg: 'from-slate-800 via-amber-900 to-red-950', accent: '#FDE047', icon: '🌀' },
+        'vangogh-teal': { bg: 'from-teal-500 via-cyan-700 to-amber-800', accent: '#CCFBF1', icon: '🎨' },
+        'zekrom-obsidian': { bg: 'from-slate-700 via-slate-900 to-blue-950', accent: '#93C5FD', icon: '⚡' },
+        'reshiram-pearl': { bg: 'from-slate-200 via-amber-100 to-orange-300', accent: '#9A3412', icon: '🕊️' }
+      };
+      return map[theme] || map['pikachu-gold'];
+    }
+
+    function normalizeDriveImage(url) {
+      if (!url) return '';
+      const fileId = extractDriveId(url);
+      if (fileId) {
+        if (imageBase64Cache.has(fileId)) return imageBase64Cache.get(fileId);
+        if (window.location.protocol === 'file:') enqueueDriveImageProxy(fileId);
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w600`;
+      }
+      return String(url).trim();
+    }
+
+    function renderSlabVisual(card, isLarge = false) {
+      const fileId = extractDriveId(card.imageUrl);
+      const cleanImg = normalizeDriveImage(card.imageUrl);
+      const t = getThemeColors(card.theme);
+      const sizeClasses = isLarge ? 'w-44 h-64' : 'w-36 h-52';
+
+      if (cleanImg) {
+        return `
+          <div class="relative ${sizeClasses} rounded-xl bg-slate-100 border border-slate-300 p-1.5 shadow-md flex items-center justify-center overflow-hidden">
+            <img src="${cleanImg}" ${fileId ? `data-gdrive-id="${fileId}"` : ''} alt="${card.name}" class="w-full h-full object-contain rounded-lg" onerror="handleSmartImgError(this)" />
+            <div style="display:none;" class="fallback-graphic w-full h-full flex-col justify-between rounded-lg bg-slate-900 p-2 text-white">
+              <div class="bg-white border-2 border-red-600 rounded px-1.5 py-0.5 text-[8px] font-black text-slate-900 flex justify-between">
+                <span>${card.cardNumber}</span>
+                <span class="text-red-600">${card.grade}</span>
+              </div>
+              <div class="flex-1 my-1 rounded bg-gradient-to-br ${t.bg} flex items-center justify-center text-2xl">${t.icon}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="relative ${sizeClasses} rounded-xl bg-gradient-to-b from-slate-200 via-white to-slate-200 p-1.5 border border-slate-300/90 shadow-md flex flex-col justify-between select-none">
+          <!-- PSA Top Red/White Flip Label -->
+          <div class="bg-white psa-label-border rounded-md px-1.5 py-1 flex items-center justify-between gap-1">
+            <div class="min-w-0">
+              <div class="text-[7px] font-black text-slate-900 truncate leading-tight">${card.series}</div>
+              <div class="text-[7px] font-bold text-slate-600 truncate leading-tight">${card.cardNumber} · GEM MT</div>
+            </div>
+            <div class="shrink-0 bg-red-600 text-white text-[9px] font-black px-1 py-0.5 rounded leading-none">
+              10
+            </div>
+          </div>
+
+          <!-- Inner Foil Card Artwork -->
+          <div class="flex-1 mt-1.5 rounded-lg bg-gradient-to-br ${t.bg} p-2 flex flex-col justify-between text-white relative overflow-hidden shadow-inner">
+            <div class="flex items-center justify-between text-[8px] font-black tracking-wider opacity-90">
+              <span>POKÉMON</span>
+              <span>${card.cardNumber}</span>
+            </div>
+            <div class="my-auto text-center">
+              <div class="text-2xl sm:text-3xl drop-shadow-md">${t.icon}</div>
+              <div class="text-[8px] font-extrabold uppercase tracking-tight mt-1 line-clamp-2 leading-tight px-0.5" style="color:${t.accent}">
+                ${card.name}
+              </div>
+            </div>
+            <div class="text-[7px] text-center font-mono opacity-75 tracking-widest">
+              PSA CERTIFIED
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // 4. FILTERING & GRID RENDERING
+    // =========================================================================
+    function initFilters() {
+      const eras = [
+        { id: 'all', label: '全部鑑定卡' },
+        { id: 'pikachu', label: '比卡超系列 (Pikachu)' },
+        { id: 'poncho', label: '披風 / 路易吉限定' },
+        { id: '2015-2018', label: '2015–2018 XY / SM' },
+        { id: '2021-2025', label: '2021–2025 SWSH / SV' }
+      ];
+
+      document.getElementById('eraTabs').innerHTML = eras.map(e => {
+        const active = currentEra === e.id;
+        return `
+          <button
+            onclick="selectEra('${e.id}')"
+            class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold border transition ${
+              active
+                ? 'bg-vault-dark text-amber-400 border-vault-dark shadow-sm'
+                : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200/70'
+            }"
+          >
+            ${e.label}
+          </button>
+        `;
+      }).join('');
+
+      const seriesSelect = document.getElementById('seriesFilter');
+      const uniqueSeries = [...new Set(cards.map(c => c.series))];
+      seriesSelect.innerHTML = `<option value="all">全部系列 / 年份 (${uniqueSeries.length})</option>` +
+        uniqueSeries.map(s => `<option value="${s}">${s}</option>`).join('');
+    }
+
+    function selectEra(eraId) {
+      currentEra = eraId;
+      initFilters();
+      applyFilters();
+    }
+
+    function quickSearch(keyword) {
+      handleSearch(keyword);
+      document.getElementById('cardGrid').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleSearch(val) {
+      searchQuery = (val || '').trim().toLowerCase();
+      const d = document.getElementById('desktopSearchInput');
+      const m = document.getElementById('mobileSearchInput');
+      if (d && d.value !== val) d.value = val;
+      if (m && m.value !== val) m.value = val;
+      applyFilters();
+    }
+
+    function resetFilters() {
+      currentEra = 'all';
+      searchQuery = '';
+      document.getElementById('desktopSearchInput').value = '';
+      document.getElementById('mobileSearchInput').value = '';
+      document.getElementById('seriesFilter').value = 'all';
+      document.getElementById('sortFilter').value = 'default';
+      document.getElementById('inStockOnlyToggle').checked = false;
+      initFilters();
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const selectedSeries = document.getElementById('seriesFilter').value;
+      const sortMode = document.getElementById('sortFilter').value;
+      const inStockOnly = document.getElementById('inStockOnlyToggle').checked;
+
+      let filtered = cards.filter(c => {
+        if (currentEra === 'pikachu' && !c.name.toLowerCase().includes('pikachu')) return false;
+        if (currentEra === 'poncho' && !c.name.toLowerCase().includes('poncho') && !c.name.toLowerCase().includes('luigi')) return false;
+        if (currentEra === '2015-2018' && !/201[5-8]/.test(c.series)) return false;
+        if (currentEra === '2021-2025' && !/202[1-5]/.test(c.series)) return false;
+
+        if (selectedSeries !== 'all' && c.series !== selectedSeries) return false;
+        if (inStockOnly && c.stock <= 0) return false;
+
+        if (searchQuery) {
+          const hay = `${c.series} ${c.name} ${c.cardNumber} ${c.grade}`.toLowerCase();
+          if (!hay.includes(searchQuery)) return false;
+        }
+        return true;
+      });
+
+      if (sortMode === 'desc') {
+        filtered = [...filtered].sort((a, b) => b.price - a.price);
+      } else if (sortMode === 'asc') {
+        filtered = [...filtered].sort((a, b) => a.price - b.price);
+      }
+
+      document.getElementById('resultCount').textContent = filtered.length;
+      renderGrid(filtered);
+    }
+
+    function renderGrid(list) {
+      const grid = document.getElementById('cardGrid');
+      const empty = document.getElementById('emptyState');
+
+      if (!list || list.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.innerHTML = list.map(c => {
+        const inCart = cart.some(item => item.id === c.id);
+        const soldOut = c.stock <= 0;
+
+        return `
+          <div class="slab-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between group">
+            <div>
+              <!-- Top Badges -->
+              <div class="flex items-center justify-between gap-1.5 mb-3">
+                <span class="text-[10px] font-black px-2 py-0.5 rounded bg-red-600 text-white tracking-wider shrink-0">
+                  ${c.grade}
+                </span>
+                <span class="text-[11px] font-mono font-bold text-slate-500">
+                  ${c.cardNumber}
+                </span>
+                ${
+                  soldOut
+                    ? '<span class="text-[11px] font-extrabold text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">已售出</span>'
+                    : '<span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">現貨 1 張</span>'
+                }
+              </div>
+
+              <!-- Card Slab Visual -->
+              <div onclick="openCardModal('${c.id}')" class="cursor-pointer py-4 px-2 rounded-xl bg-gradient-to-b from-slate-50 to-slate-100/80 border border-slate-100 mb-3.5 flex items-center justify-center transition group-hover:scale-[1.02]">
+                ${renderSlabVisual(c, false)}
+              </div>
+
+              <!-- Series & D-Column Card Number -->
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 truncate">
+                  ${c.series}
+                </span>
+                ${c.cardNumber ? `<span class="shrink-0 text-[11px] font-mono font-black text-slate-800 bg-amber-100/90 border border-amber-300/80 px-2 py-0.5 rounded-md">${c.cardNumber}</span>` : ''}
+              </div>
+              <h3 onclick="openCardModal('${c.id}')" class="cursor-pointer text-sm sm:text-base font-black text-slate-900 group-hover:text-amber-600 transition line-clamp-2 mt-0.5 min-h-[2.5rem]" title="${c.name}">
+                ${c.name}
+              </h3>
+            </div>
+
+            <!-- Price & Action -->
+            <div class="mt-4 pt-3.5 border-t border-slate-100 space-y-2.5">
+              <div class="flex items-baseline justify-between">
+                <span class="text-lg sm:text-xl font-black text-slate-900">$${c.price.toLocaleString()}</span>
+                <span class="text-[10px] font-bold text-slate-400">HKD</span>
+              </div>
+
+              <button
+                onclick="openCardModal('${c.id}')"
+                class="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-extrabold transition flex items-center justify-center gap-1.5 active:scale-95 ${
+                  soldOut
+                    ? 'bg-slate-200 text-slate-500 cursor-not-allowed'
+                    : inCart
+                      ? 'bg-emerald-600 text-white'
+                      : 'bg-vault-dark hover:bg-amber-500 text-white hover:text-slate-950 shadow-md shadow-slate-900/10'
+                }"
+              >
+                <span>${soldOut ? '已售罄' : inCart ? '已在購物車內' : '檢視詳情 / 選購'}</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 5. MODAL & CART LOGIC
+    // =========================================================================
+    function openCardModal(cardId) {
+      const card = cards.find(c => c.id === cardId);
+      if (!card) return;
+      activeCard = card;
+
+      document.getElementById('modalGradeBadge').textContent = card.grade;
+      document.getElementById('modalCardNumBadge').textContent = card.cardNumber;
+      document.getElementById('modalSeriesText').textContent = card.series;
+      document.getElementById('modalCardName').textContent = card.name;
+      document.getElementById('modalCardPrice').textContent = `$${card.price.toLocaleString()}`;
+      document.getElementById('modalSlabPreview').innerHTML = renderSlabVisual(card, true);
+
+      const addBtn = document.getElementById('modalAddBtn');
+      const stockBadge = document.getElementById('modalStockBadge');
+
+      if (card.stock <= 0) {
+        stockBadge.innerHTML = `<span class="inline-block text-xs font-extrabold text-red-600 bg-red-50 border border-red-200 px-2.5 py-1 rounded-lg">此鑑定卡已售出</span>`;
+        addBtn.disabled = true;
+        addBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      } else {
+        stockBadge.innerHTML = `<span class="inline-block text-xs font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">現貨供應（限量 ${card.stock} 張）</span>`;
+        addBtn.disabled = false;
+        addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+
+      const modal = document.getElementById('cardModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCardModal() {
+      const modal = document.getElementById('cardModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      activeCard = null;
+    }
+
+    // =========================================================================
+    // 5B. HIGH-RES IMAGE LIGHTBOX (ZOOM & PAN)
+    // =========================================================================
+    let lbScale = 1;
+    let lbTranslateX = 0;
+    let lbTranslateY = 0;
+    let lbIsDragging = false;
+    let lbDragStartX = 0;
+    let lbDragStartY = 0;
+    let lbInitialPinchDist = null;
+    let lbInitialPinchScale = 1;
+
+    function getHighResDriveImage(url) {
+      if (!url) return '';
+      const fileId = extractDriveId(url);
+      if (fileId) {
+        if (imageBase64Cache.has(fileId)) return imageBase64Cache.get(fileId);
+        enqueueDriveImageProxy(fileId);
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
+      }
+      return String(url).trim();
+    }
+
+    function openImageLightbox() {
+      if (!activeCard) return;
+      const lb = document.getElementById('imageLightbox');
+      const imgEl = document.getElementById('lightboxImg');
+      const fbEl = document.getElementById('lightboxFallbackSlab');
+
+      document.getElementById('lightboxGradeBadge').textContent = activeCard.grade;
+      document.getElementById('lightboxNumBadge').textContent = activeCard.cardNumber;
+      document.getElementById('lightboxCardTitle').textContent = `${activeCard.name} (${activeCard.series})`;
+
+      const fileId = extractDriveId(activeCard.imageUrl);
+      const highResSrc = getHighResDriveImage(activeCard.imageUrl);
+
+      if (highResSrc) {
+        fbEl.classList.add('hidden');
+        fbEl.innerHTML = '';
+        imgEl.classList.remove('hidden');
+        imgEl.style.display = 'block';
+        imgEl.removeAttribute('data-retry-stage');
+        if (fileId) {
+          imgEl.setAttribute('data-gdrive-id', fileId);
+        } else {
+          imgEl.removeAttribute('data-gdrive-id');
+        }
+        imgEl.onerror = function() {
+          const st = Number(this.getAttribute('data-retry-stage') || '0');
+          if (fileId) {
+            if (imageBase64Cache.has(fileId)) {
+              this.src = imageBase64Cache.get(fileId);
+              return;
+            }
+            if (st === 0) {
+              this.setAttribute('data-retry-stage', '1');
+              this.src = `https://lh3.googleusercontent.com/d/${fileId}=w1600`;
+              return;
+            }
+            if (st === 1) {
+              this.setAttribute('data-retry-stage', '2');
+              this.src = `https://drive.google.com/uc?export=view&id=${fileId}`;
+              return;
+            }
+          }
+          this.classList.add('hidden');
+          fbEl.innerHTML = renderSlabVisual(activeCard, true);
+          fbEl.classList.remove('hidden');
+        };
+        imgEl.src = highResSrc;
+      } else {
+        imgEl.classList.add('hidden');
+        fbEl.innerHTML = renderSlabVisual(activeCard, true);
+        fbEl.classList.remove('hidden');
+      }
+
+      resetLightboxZoom(true);
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+    }
+
+    function closeImageLightbox() {
+      const lb = document.getElementById('imageLightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+    }
+
+    function applyLightboxTransform(smooth = false) {
+      const wrap = document.getElementById('lightboxTransformWrap');
+      const zoomBadge = document.getElementById('lightboxZoomLevel');
+      if (!wrap) return;
+      wrap.style.transition = smooth ? 'transform 0.18s ease-out' : 'none';
+      wrap.style.transform = `translate(${lbTranslateX}px, ${lbTranslateY}px) scale(${lbScale})`;
+      if (zoomBadge) {
+        zoomBadge.textContent = `${Math.round(lbScale * 100)}%`;
+      }
+    }
+
+    function adjustLightboxZoom(delta) {
+      lbScale = Math.min(4, Math.max(1, Number((lbScale + delta).toFixed(2))));
+      if (lbScale === 1) {
+        lbTranslateX = 0;
+        lbTranslateY = 0;
+      }
+      applyLightboxTransform(true);
+    }
+
+    function resetLightboxZoom(instant = false) {
+      lbScale = 1;
+      lbTranslateX = 0;
+      lbTranslateY = 0;
+      applyLightboxTransform(!instant);
+    }
+
+    (function initLightboxGestures() {
+      window.addEventListener('DOMContentLoaded', () => {
+        const viewport = document.getElementById('lightboxViewport');
+        if (!viewport) return;
+
+        // Mouse wheel zoom
+        viewport.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const delta = e.deltaY < 0 ? 0.35 : -0.35;
+          adjustLightboxZoom(delta);
+        }, { passive: false });
+
+        // Double click to toggle 1x / 2.5x zoom
+        viewport.addEventListener('dblclick', () => {
+          if (lbScale > 1) {
+            resetLightboxZoom();
+          } else {
+            lbScale = 2.5;
+            applyLightboxTransform(true);
+          }
+        });
+
+        // Mouse drag to pan when zoomed
+        viewport.addEventListener('mousedown', (e) => {
+          if (lbScale <= 1) return;
+          lbIsDragging = true;
+          lbDragStartX = e.clientX - lbTranslateX;
+          lbDragStartY = e.clientY - lbTranslateY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!lbIsDragging) return;
+          lbTranslateX = e.clientX - lbDragStartX;
+          lbTranslateY = e.clientY - lbDragStartY;
+          applyLightboxTransform(false);
+        });
+
+        window.addEventListener('mouseup', () => {
+          lbIsDragging = false;
+        });
+
+        // Touch drag & pinch-to-zoom for mobile/tablet
+        viewport.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 2) {
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            lbInitialPinchDist = Math.hypot(dx, dy);
+            lbInitialPinchScale = lbScale;
+          } else if (e.touches.length === 1 && lbScale > 1) {
+            lbIsDragging = true;
+            lbDragStartX = e.touches[0].clientX - lbTranslateX;
+            lbDragStartY = e.touches[0].clientY - lbTranslateY;
+          }
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 2 && lbInitialPinchDist) {
+            e.preventDefault();
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const dist = Math.hypot(dx, dy);
+            lbScale = Math.min(4, Math.max(1, Number((lbInitialPinchScale * (dist / lbInitialPinchDist)).toFixed(2))));
+            if (lbScale === 1) {
+              lbTranslateX = 0;
+              lbTranslateY = 0;
+            }
+            applyLightboxTransform(false);
+          } else if (e.touches.length === 1 && lbIsDragging && lbScale > 1) {
+            e.preventDefault();
+            lbTranslateX = e.touches[0].clientX - lbDragStartX;
+            lbTranslateY = e.touches[0].clientY - lbDragStartY;
+            applyLightboxTransform(false);
+          }
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', () => {
+          lbIsDragging = false;
+          lbInitialPinchDist = null;
+        });
+
+        // ESC key to close lightbox or card modal
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            const lb = document.getElementById('imageLightbox');
+            if (lb && !lb.classList.contains('hidden')) {
+              closeImageLightbox();
+            } else {
+              closeCardModal();
+            }
+          }
+        });
+      });
+    })();
+
+    function confirmAddCardToCart() {
+      if (!activeCard || activeCard.stock <= 0) return;
+      const exists = cart.find(i => i.id === activeCard.id);
+      if (exists) {
+        showToast('此獨一無二鑑定卡已在您的購物車內！');
+        closeCardModal();
+        toggleCartDrawer(true);
+        return;
+      }
+
+      cart.push({
+        id: activeCard.id,
+        series: activeCard.series,
+        name: activeCard.name,
+        cardNumber: activeCard.cardNumber,
+        grade: activeCard.grade,
+        price: activeCard.price,
+        qty: 1
+      });
+
+      updateCartUI();
+      applyFilters();
+      closeCardModal();
+      showToast(`已將 ${activeCard.name} (${activeCard.cardNumber}) 加入購物車`);
+    }
+
+    function toggleCartDrawer(open) {
+      const overlay = document.getElementById('cartDrawerOverlay');
+      if (open) {
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+        updateCartUI();
+      } else {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+      }
+    }
+
+    function updateCartUI() {
+      document.getElementById('cartBadge').textContent = String(cart.length);
+
+      const listEl = document.getElementById('cartItemsList');
+      const formSec = document.getElementById('checkoutFormSection');
+      const footerEl = document.getElementById('cartDrawerFooter');
+
+      if (cart.length === 0) {
+        listEl.innerHTML = `
+          <div class="text-center py-12 bg-slate-50 rounded-2xl border border-dashed border-slate-300">
+            <p class="text-sm font-bold text-slate-600">購物車目前是空的</p>
+            <p class="text-xs text-slate-400 mt-1">請從目錄挑選心儀的 PSA 10 鑑定卡</p>
+          </div>
+        `;
+        formSec.classList.add('hidden');
+        footerEl.classList.add('hidden');
+        return;
+      }
+
+      formSec.classList.remove('hidden');
+      footerEl.classList.remove('hidden');
+
+      let total = 0;
+      listEl.innerHTML = cart.map((item, idx) => {
+        total += item.price * item.qty;
+        return `
+          <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-start justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] font-black px-2 py-0.5 rounded bg-red-600 text-white">${item.grade}</span>
+                <span class="text-[11px] font-mono font-bold text-slate-500">${item.cardNumber}</span>
+              </div>
+              <h4 class="text-sm font-black text-slate-900 mt-1">${item.name}</h4>
+              <p class="text-xs text-slate-500 mt-0.5">${item.series}</p>
+              <div class="text-base font-black text-amber-700 mt-2">$${item.price.toLocaleString()}</div>
+            </div>
+            <button onclick="removeCartItem(${idx})" class="text-slate-400 hover:text-red-600 p-1 transition" title="移除">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cartTotalAmount').textContent = `$${total.toLocaleString()}`;
+    }
+
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      updateCartUI();
+      applyFilters();
+    }
+
+    function selectPayment(method) {
+      selectedPayment = method;
+      document.querySelectorAll('.pay-opt').forEach(btn => {
+        if (btn.getAttribute('data-pay') === method) {
+          btn.className = 'pay-opt flex items-center gap-2 py-2 px-3 rounded-xl border-2 border-amber-500 bg-amber-50 text-slate-950 font-extrabold text-xs';
+        } else {
+          btn.className = 'pay-opt flex items-center gap-2 py-2 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-700 font-extrabold text-xs';
+        }
+      });
+    }
+
+    async function submitOrder() {
+      if (cart.length === 0) return;
+
+      const customerName = document.getElementById('custName').value.trim();
+      const customerPhone = document.getElementById('custPhone').value.trim();
+      const customerNote = document.getElementById('custNote').value.trim();
+
+      if (!customerName || !customerPhone) {
+        showToast('請填寫聯絡人姓名及聯絡電話！', true);
+        return;
+      }
+
+      const btn = document.getElementById('submitOrderBtn');
+      const origText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '正在處理訂單並鎖定鑑定卡...';
+
+      const orderId = `KINGZ-${new Date().toISOString().slice(2, 10).replace(/-/g, '')}-${Math.floor(1000 + Math.random() * 9000)}`;
+      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+      if (PTCG_CLOUD_ENDPOINT) {
+        try {
+          const res = await fetch(PTCG_CLOUD_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              orderId,
+              customerName,
+              customerPhone,
+              paymentMethod: selectedPayment,
+              customerNote,
+              items: cart,
+              total
+            })
+          });
+          const data = await res.json();
+          if (data.status !== 'ok') throw new Error(data.message || '下單失敗');
+        } catch (err) {
+          showToast(`下單失敗：${err.message}`, true);
+          btn.disabled = false;
+          btn.textContent = origText;
+          return;
+        }
+      }
+
+      // Mark ordered cards out of stock locally
+      cart.forEach(item => {
+        const target = cards.find(c => c.id === item.id);
+        if (target) target.stock = Math.max(0, target.stock - item.qty);
+      });
+
+      const receipt = [
+        `====================================`,
+        `KINGZ PTCG 鑑定卡訂購確認單`,
+        `訂單編號：${orderId}`,
+        `訂購時間：${new Date().toLocaleString('zh-HK', { hour12: false })}`,
+        `聯絡人姓名：${customerName}`,
+        `聯絡電話：${customerPhone}`,
+        `付款方式：${selectedPayment}`,
+        customerNote ? `交收備註：${customerNote}` : null,
+        `------------------------------------`,
+        ...cart.map((i, idx) => `${idx + 1}. ${i.name} [${i.cardNumber} · ${i.grade}] — $${i.price.toLocaleString()}`),
+        `------------------------------------`,
+        `訂單總金額：HKD $${total.toLocaleString()}`,
+        `====================================`
+      ].filter(Boolean).join('\n');
+
+      document.getElementById('orderReceiptText').textContent = receipt;
+      document.getElementById('orderReceiptCard').classList.remove('hidden');
+
+      cart = [];
+      updateCartUI();
+      applyFilters();
+      btn.disabled = false;
+      btn.textContent = origText;
+      showToast(`訂單 ${orderId} 已確認！`);
+    }
+
+    function copyOrderReceipt() {
+      const text = document.getElementById('orderReceiptText').textContent;
+      if (!text) return;
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('已複製訂單收據！');
+      } catch (e) {
+        showToast('複製失敗，請手動選取複製', true);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function showToast(msg, isErr = false) {
+      const container = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-xl text-xs sm:text-sm font-bold text-white flex items-center gap-2 animate-fade-up ${
+        isErr ? 'bg-red-600' : 'bg-vault-dark border border-amber-500/40'
+      }`;
+      el.innerHTML = `<span class="w-2 h-2 rounded-full ${isErr ? 'bg-white' : 'bg-amber-400'}"></span><span>${msg}</span>`;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transition = 'opacity 0.25s ease';
+        setTimeout(() => el.remove(), 260);
+      }, 3000);
+    }
+
+    // =========================================================================
+    // 6. BACKGROUND CATALOG SYNC (SILENT, NO PUBLIC UI EXPOSURE)
+    // =========================================================================
+    async function syncCatalogSilently(showManualToast = false) {
+      if (!PTCG_CLOUD_ENDPOINT) {
+        if (showManualToast) showToast('請先在 ptcg-shop.html 填入 PTCG_CLOUD_ENDPOINT 網址！', true);
+        return;
+      }
+      const syncIcon = document.getElementById('syncBtnIcon');
+      if (syncIcon) syncIcon.classList.add('animate-spin');
+      try {
+        const res = await fetch(`${PTCG_CLOUD_ENDPOINT}?t=${Date.now()}`);
+        const json = await res.json();
+        if (json && json.status === 'ok' && Array.isArray(json.products) && json.products.length > 0) {
+          cards = json.products.map((p, i) => ({
+            id: p.id || `PTCG-${String(i + 1).padStart(3, '0')}`,
+            series: p.series || p['年份及系列'] || '',
+            name: p.name || p['卡片名稱'] || '',
+            cardNumber: String(p.cardNumber || p['卡片號碼'] || p['卡號'] || p.number || '').trim(),
+            grade: p.grade || p['鑑定等級'] || 'PSA 10',
+            price: Number(p.price) || 0,
+            imageUrl: p.imageUrl || '',
+            stock: Number(p.stock) || 0,
+            theme: INITIAL_PTCG_CARDS[i]?.theme || 'pikachu-gold'
+          }));
+          document.getElementById('syncStatusBadge').innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span><span class="truncate">官方認證現貨目錄 · 共 ${cards.length} 款鑑定卡</span>`;
+
+          // 自動套用 Image_Links 內的最新 Logo 與付款圖示連結
+          if (json.imageLinks && typeof json.imageLinks === 'object') {
+            const logoUrl = json.imageLinks['kingz pokemon card logo'] || json.imageLinks['logo'] || json.imageLinks['kingz logo'];
+            if (logoUrl) {
+              const newLogoId = extractDriveId(logoUrl);
+              const logoEl = document.getElementById('brandLogoImg');
+              if (newLogoId && logoEl) {
+                logoEl.setAttribute('data-gdrive-id', newLogoId);
+                logoEl.src = `https://drive.google.com/thumbnail?id=${newLogoId}&sz=w400`;
+                enqueueDriveImageProxy(newLogoId);
+              }
+            }
+            document.querySelectorAll('[data-icon-key]').forEach(btn => {
+              const key = btn.getAttribute('data-icon-key');
+              const matchedUrl = json.imageLinks[key];
+              const imgEl = btn.querySelector('img');
+              if (matchedUrl && imgEl) {
+                const newId = extractDriveId(matchedUrl);
+                if (newId) {
+                  imgEl.setAttribute('data-gdrive-id', newId);
+                  imgEl.style.display = 'block';
+                  imgEl.src = `https://drive.google.com/thumbnail?id=${newId}&sz=w200`;
+                  enqueueDriveImageProxy(newId);
+                }
+              }
+            });
+          }
+
+          initFilters();
+          applyFilters();
+          if (showManualToast) showToast(`已同步最新鑑定卡目錄（共 ${cards.length} 款）！`);
+        }
+      } catch (err) {
+        console.warn('Background catalog fetch skipped:', err);
+        if (showManualToast) showToast('同步失敗，請檢查網路或 Apps Script 部署權限', true);
+      } finally {
+        if (syncIcon) syncIcon.classList.remove('animate-spin');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initFilters();
+      applyFilters();
+      enqueueDriveImageProxy('12-efggdI4rcp9vswiIIfVtHoj9ogq0bW');
+      if (PTCG_CLOUD_ENDPOINT) {
+        syncCatalogSilently(false);
+      }
+    });
+  </script>
+</body>
+</html>
