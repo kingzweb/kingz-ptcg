@@ -76,6 +76,23 @@
     .animate-fade-up {
       animation: fadeUp 0.24s ease-out forwards;
     }
+    @keyframes cartPopBounce {
+      0% { transform: scale(1); }
+      35% { transform: scale(1.26) rotate(-5deg); box-shadow: 0 0 24px rgba(251, 191, 36, 0.85); }
+      65% { transform: scale(0.92) rotate(3deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+    .animate-cart-bounce {
+      animation: cartPopBounce 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    @keyframes badgeBurst {
+      0% { transform: scale(1); }
+      45% { transform: scale(1.5); background-color: #FEF08A; color: #090D16; }
+      100% { transform: scale(1); }
+    }
+    .animate-badge-burst {
+      animation: badgeBurst 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-amber-500 selection:text-slate-950">
@@ -115,9 +132,9 @@
             <span class="text-lg sm:text-2xl font-black tracking-tight text-white">KINGZ PTCG</span>
             <span class="inline-block text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/30">VAULT</span>
           </div>
-          <div id="syncStatusBadge" class="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-emerald-400 font-semibold leading-tight mt-0.5 truncate">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
-            <span class="truncate">官方認證現貨目錄 · 共 17 款鑑定卡</span>
+          <div id="syncStatusBadge" class="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-amber-300 font-semibold leading-tight mt-0.5 truncate">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping shrink-0"></span>
+            <span class="truncate">正在連線至 Google 雲端庫存...</span>
           </div>
         </div>
       </a>
@@ -152,6 +169,7 @@
         </button>
 
         <button
+          id="headerCartBtn"
           onclick="toggleCartDrawer(true)"
           class="relative inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm px-3 sm:px-4 py-2.5 rounded-xl shadow-lg shadow-amber-500/25 transition active:scale-95"
         >
@@ -352,7 +370,6 @@
     </div>
   </div>
 
-
   <!-- Fullscreen High-Res Image Lightbox & Zoom Viewer -->
   <div id="imageLightbox" class="fixed inset-0 z-[60] hidden flex-col bg-slate-950/95 backdrop-blur-md select-none">
     <!-- Top Control Bar -->
@@ -488,7 +505,6 @@
     // =========================================================================
     // 1. CLOUD API ENDPOINT & CATALOG DATA (MATCHING YOUR 17 PTCG CARDS)
     // =========================================================================
-    // 【請將下方引號貼上您部署 ptcg-code.gs 後取得的 Web App 網址 (/exec)】
     const PTCG_CLOUD_ENDPOINT = 'https://script.google.com/macros/s/AKfycby5GP13vm0inVJzY8rzPhr9eD7Nm7X3_wwXYVcvJl_KWOFTy1kirD-9O9vvuOaUIh6c/exec';
 
     const INITIAL_PTCG_CARDS = [
@@ -531,6 +547,122 @@
       const trimmed = String(url).trim();
       const m = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/) || trimmed.match(/lh3\.googleusercontent\.com\/d\/([a-zA-Z0-9_-]+)/);
       return (m && m[1]) ? m[1] : '';
+    }
+
+    function triggerFlyToCartAnimation(sourceEl, cardData, onComplete) {
+      const cartBtn = document.getElementById('headerCartBtn');
+      const cartBadge = document.getElementById('cartBadge');
+      if (!sourceEl || !cartBtn) {
+        if (onComplete) onComplete();
+        return;
+      }
+
+      const startRect = sourceEl.getBoundingClientRect();
+      const endRect = cartBtn.getBoundingClientRect();
+
+      const startX = startRect.left + startRect.width / 2;
+      const startY = startRect.top + startRect.height / 2;
+      const endX = endRect.left + endRect.width / 2;
+      const endY = endRect.top + endRect.height / 2;
+
+      // 建立帶有金色外框與發光拖尾的飛行鑑定卡縮圖
+      const flyer = document.createElement('div');
+      flyer.style.position = 'fixed';
+      flyer.style.left = `${startX - 50}px`;
+      flyer.style.top = `${startY - 70}px`;
+      flyer.style.width = '100px';
+      flyer.style.height = '140px';
+      flyer.style.zIndex = '99999';
+      flyer.style.pointerEvents = 'none';
+      flyer.style.borderRadius = '16px';
+      flyer.style.padding = '5px';
+      flyer.style.background = 'linear-gradient(135deg, #FEF08A, #F59E0B, #DC2626)';
+      flyer.style.boxShadow = '0 18px 40px rgba(245, 158, 11, 0.7), 0 0 24px rgba(253, 224, 71, 0.9)';
+      flyer.style.display = 'flex';
+      flyer.style.alignItems = 'center';
+      flyer.style.justifyContent = 'center';
+      flyer.style.willChange = 'transform, opacity';
+
+      const sourceImg = sourceEl.querySelector('img');
+      if (sourceImg && sourceImg.src && sourceImg.style.display !== 'none') {
+        const cloneImg = document.createElement('img');
+        cloneImg.src = sourceImg.src;
+        cloneImg.style.width = '100%';
+        cloneImg.style.height = '100%';
+        cloneImg.style.objectFit = 'contain';
+        cloneImg.style.borderRadius = '11px';
+        cloneImg.style.background = '#0F172A';
+        flyer.appendChild(cloneImg);
+      } else {
+        flyer.innerHTML = `<div style="width:100%;height:100%;border-radius:11px;background:#090D16;color:#FDE047;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:900;text-align:center;padding:4px;"><span>PSA 10</span><span style="margin-top:4px;font-size:10px;color:#fff;">${cardData ? cardData.cardNumber : ''}</span></div>`;
+      }
+
+      document.body.appendChild(flyer);
+
+      // 拋物線弧頂控制點（向上拱起形成流暢拋物線）
+      const deltaX = endX - startX;
+      const deltaY = endY - startY;
+      const arcPeakY = Math.min(deltaY * 0.45 - 110, -85);
+
+      const anim = flyer.animate([
+        { transform: 'translate3d(0px, 0px, 0) scale(1.1) rotate(0deg)', opacity: 1 },
+        { transform: `translate3d(${deltaX * 0.45}px, ${arcPeakY}px, 0) scale(0.8) rotate(-12deg)`, opacity: 0.98, offset: 0.5 },
+        { transform: `translate3d(${deltaX}px, ${deltaY}px, 0) scale(0.2) rotate(16deg)`, opacity: 0.25 }
+      ], {
+        duration: 720,
+        easing: 'cubic-bezier(0.22, 0.85, 0.36, 1)',
+        fill: 'forwards'
+      });
+
+      anim.onfinish = () => {
+        flyer.remove();
+        // 觸發右上角購物車按鈕與徽章彈跳金光特效
+        cartBtn.classList.remove('animate-cart-bounce');
+        void cartBtn.offsetWidth;
+        cartBtn.classList.add('animate-cart-bounce');
+
+        if (cartBadge) {
+          cartBadge.classList.remove('animate-badge-burst');
+          void cartBadge.offsetWidth;
+          cartBadge.classList.add('animate-badge-burst');
+        }
+        if (onComplete) onComplete();
+      };
+    }
+
+    function confirmAddCardToCart() {
+      if (!activeCard || activeCard.stock <= 0) return;
+      const exists = cart.find(i => i.id === activeCard.id);
+      if (exists) {
+        showToast('此獨一無二鑑定卡已在您的購物車內！');
+        closeCardModal();
+        toggleCartDrawer(true);
+        return;
+      }
+
+      const cardToAdd = {
+        id: activeCard.id,
+        series: activeCard.series,
+        name: activeCard.name,
+        cardNumber: activeCard.cardNumber,
+        grade: activeCard.grade,
+        price: activeCard.price,
+        qty: 1
+      };
+
+      // 優先取得詳情視窗內的卡片位置，若找不到則從主頁該張卡片位置起飛
+      const modalPreviewEl = document.getElementById('modalSlabPreview');
+      const gridCardEl = document.querySelector(`[data-card-id="${cardToAdd.id}"]`);
+      const sourceEl = (modalPreviewEl && modalPreviewEl.getBoundingClientRect().width > 0) ? modalPreviewEl : gridCardEl;
+
+      triggerFlyToCartAnimation(sourceEl, cardToAdd, () => {
+        cart.push(cardToAdd);
+        updateCartUI();
+        applyFilters();
+        showToast(`已將 ${cardToAdd.name} (${cardToAdd.cardNumber}) 加入購物車`);
+      });
+
+      closeCardModal();
     }
 
     function enqueueDriveImageProxy(fileId) {
@@ -629,7 +761,7 @@
       const fileId = extractDriveId(url);
       if (fileId) {
         if (imageBase64Cache.has(fileId)) return imageBase64Cache.get(fileId);
-        if (window.location.protocol === 'file:') enqueueDriveImageProxy(fileId);
+        enqueueDriveImageProxy(fileId);
         return `https://drive.google.com/thumbnail?id=${fileId}&sz=w600`;
       }
       return String(url).trim();
@@ -802,7 +934,7 @@
         const soldOut = c.stock <= 0;
 
         return `
-          <div class="slab-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between group">
+          <div data-card-id="${c.id}" class="slab-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between group">
             <div>
               <!-- Top Badges -->
               <div class="flex items-center justify-between gap-1.5 mb-3">
@@ -1020,14 +1152,12 @@
         const viewport = document.getElementById('lightboxViewport');
         if (!viewport) return;
 
-        // Mouse wheel zoom
         viewport.addEventListener('wheel', (e) => {
           e.preventDefault();
           const delta = e.deltaY < 0 ? 0.35 : -0.35;
           adjustLightboxZoom(delta);
         }, { passive: false });
 
-        // Double click to toggle 1x / 2.5x zoom
         viewport.addEventListener('dblclick', () => {
           if (lbScale > 1) {
             resetLightboxZoom();
@@ -1037,7 +1167,6 @@
           }
         });
 
-        // Mouse drag to pan when zoomed
         viewport.addEventListener('mousedown', (e) => {
           if (lbScale <= 1) return;
           lbIsDragging = true;
@@ -1056,7 +1185,6 @@
           lbIsDragging = false;
         });
 
-        // Touch drag & pinch-to-zoom for mobile/tablet
         viewport.addEventListener('touchstart', (e) => {
           if (e.touches.length === 2) {
             const dx = e.touches[0].clientX - e.touches[1].clientX;
@@ -1095,7 +1223,6 @@
           lbInitialPinchDist = null;
         });
 
-        // ESC key to close lightbox or card modal
         window.addEventListener('keydown', (e) => {
           if (e.key === 'Escape') {
             const lb = document.getElementById('imageLightbox');
@@ -1108,32 +1235,6 @@
         });
       });
     })();
-
-    function confirmAddCardToCart() {
-      if (!activeCard || activeCard.stock <= 0) return;
-      const exists = cart.find(i => i.id === activeCard.id);
-      if (exists) {
-        showToast('此獨一無二鑑定卡已在您的購物車內！');
-        closeCardModal();
-        toggleCartDrawer(true);
-        return;
-      }
-
-      cart.push({
-        id: activeCard.id,
-        series: activeCard.series,
-        name: activeCard.name,
-        cardNumber: activeCard.cardNumber,
-        grade: activeCard.grade,
-        price: activeCard.price,
-        qty: 1
-      });
-
-      updateCartUI();
-      applyFilters();
-      closeCardModal();
-      showToast(`已將 ${activeCard.name} (${activeCard.cardNumber}) 加入購物車`);
-    }
 
     function toggleCartDrawer(open) {
       const overlay = document.getElementById('cartDrawerOverlay');
@@ -1255,7 +1356,6 @@
         }
       }
 
-      // Mark ordered cards out of stock locally
       cart.forEach(item => {
         const target = cards.find(c => c.id === item.id);
         if (target) target.stock = Math.max(0, target.stock - item.qty);
@@ -1320,67 +1420,122 @@
     }
 
     // =========================================================================
-    // 6. BACKGROUND CATALOG SYNC (SILENT, NO PUBLIC UI EXPOSURE)
+    // 6. SMART CLOUD SYNC WITH AUTO IMAGE_LINKS MATCHING
     // =========================================================================
+    function matchImageFromLinks(imageLinks, cardName, cardNumber) {
+      if (!imageLinks || typeof imageLinks !== 'object') return '';
+      const cleanName = String(cardName || '').toLowerCase().trim();
+      const numDigits = String(cardNumber || '').replace(/[^0-9]/g, '');
+
+      // 1. Exact name match
+      if (cleanName && imageLinks[cleanName]) return imageLinks[cleanName];
+
+      // 2. Match by card number (e.g. "203", "#203", "296") or partial card name inside Image_Links keys
+      const entries = Object.entries(imageLinks);
+      for (const [k, url] of entries) {
+        if (cleanName && (k.includes(cleanName) || cleanName.includes(k))) {
+          return url;
+        }
+      }
+      if (numDigits && numDigits.length >= 2) {
+        for (const [k, url] of entries) {
+          if (k.includes(numDigits)) {
+            return url;
+          }
+        }
+      }
+      return '';
+    }
+
     async function syncCatalogSilently(showManualToast = false) {
+      const badgeEl = document.getElementById('syncStatusBadge');
       if (!PTCG_CLOUD_ENDPOINT) {
-        if (showManualToast) showToast('請先在 ptcg-shop.html 填入 PTCG_CLOUD_ENDPOINT 網址！', true);
+        if (showManualToast) showToast('請先填入 PTCG_CLOUD_ENDPOINT 網址！', true);
         return;
       }
       const syncIcon = document.getElementById('syncBtnIcon');
       if (syncIcon) syncIcon.classList.add('animate-spin');
+      if (badgeEl) {
+        badgeEl.className = 'flex items-center gap-1.5 text-[10px] sm:text-[11px] text-amber-300 font-semibold leading-tight mt-0.5 truncate';
+        badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping shrink-0"></span><span class="truncate">正在同步 Google 雲端庫存...</span>`;
+      }
+
       try {
-        const res = await fetch(`${PTCG_CLOUD_ENDPOINT}?t=${Date.now()}`);
+        const res = await fetch(`${PTCG_CLOUD_ENDPOINT}?t=${Date.now()}`, { redirect: 'follow' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
+
         if (json && json.status === 'ok' && Array.isArray(json.products) && json.products.length > 0) {
-          cards = json.products.map((p, i) => ({
-            id: p.id || `PTCG-${String(i + 1).padStart(3, '0')}`,
-            series: p.series || p['年份及系列'] || '',
-            name: p.name || p['卡片名稱'] || '',
-            cardNumber: String(p.cardNumber || p['卡片號碼'] || p['卡號'] || p.number || '').trim(),
-            grade: p.grade || p['鑑定等級'] || 'PSA 10',
-            price: Number(p.price) || 0,
-            imageUrl: p.imageUrl || '',
-            stock: Number(p.stock) || 0,
-            theme: INITIAL_PTCG_CARDS[i]?.theme || 'pikachu-gold'
-          }));
-          document.getElementById('syncStatusBadge').innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span><span class="truncate">官方認證現貨目錄 · 共 ${cards.length} 款鑑定卡</span>`;
+          const linksMap = (json.imageLinks && typeof json.imageLinks === 'object') ? json.imageLinks : {};
+
+          cards = json.products.map((p, i) => {
+            const cName = p.name || p['卡片名稱'] || '';
+            const cNum = String(p.cardNumber || p['卡片號碼'] || p['卡號'] || p.number || '').trim();
+            let rawImg = String(p.imageUrl || p['圖片'] || p['圖片連結'] || '').trim();
+            if (!rawImg) {
+              rawImg = matchImageFromLinks(linksMap, cName, cNum);
+            }
+
+            return {
+              id: p.id || `PTCG-${String(i + 1).padStart(3, '0')}`,
+              series: p.series || p['年份及系列'] || '',
+              name: cName,
+              cardNumber: cNum,
+              grade: p.grade || p['鑑定等級'] || 'PSA 10',
+              price: Number(p.price) || 0,
+              imageUrl: rawImg,
+              stock: Number(p.stock) || 0,
+              theme: INITIAL_PTCG_CARDS[i]?.theme || 'pikachu-gold'
+            };
+          });
+
+          if (badgeEl) {
+            badgeEl.className = 'flex items-center gap-1.5 text-[10px] sm:text-[11px] text-emerald-400 font-semibold leading-tight mt-0.5 truncate';
+            badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span><span class="truncate">已連線 Google 雲端庫存 · 共 ${cards.length} 款鑑定卡</span>`;
+          }
 
           // 自動套用 Image_Links 內的最新 Logo 與付款圖示連結
-          if (json.imageLinks && typeof json.imageLinks === 'object') {
-            const logoUrl = json.imageLinks['kingz pokemon card logo'] || json.imageLinks['logo'] || json.imageLinks['kingz logo'];
-            if (logoUrl) {
-              const newLogoId = extractDriveId(logoUrl);
-              const logoEl = document.getElementById('brandLogoImg');
-              if (newLogoId && logoEl) {
-                logoEl.setAttribute('data-gdrive-id', newLogoId);
-                logoEl.src = `https://drive.google.com/thumbnail?id=${newLogoId}&sz=w400`;
-                enqueueDriveImageProxy(newLogoId);
+          const logoUrl = linksMap['kingz pokemon card logo'] || linksMap['logo'] || linksMap['kingz logo'];
+          if (logoUrl) {
+            const newLogoId = extractDriveId(logoUrl);
+            const logoEl = document.getElementById('brandLogoImg');
+            if (newLogoId && logoEl) {
+              logoEl.setAttribute('data-gdrive-id', newLogoId);
+              logoEl.style.display = 'block';
+              logoEl.src = `https://drive.google.com/thumbnail?id=${newLogoId}&sz=w400`;
+              const fb = logoEl.parentElement ? logoEl.parentElement.querySelector('.fallback-graphic') : null;
+              if (fb) fb.style.display = 'none';
+              enqueueDriveImageProxy(newLogoId);
+            }
+          }
+          document.querySelectorAll('[data-icon-key]').forEach(btn => {
+            const key = btn.getAttribute('data-icon-key');
+            const matchedUrl = linksMap[key];
+            const imgEl = btn.querySelector('img');
+            if (matchedUrl && imgEl) {
+              const newId = extractDriveId(matchedUrl);
+              if (newId) {
+                imgEl.setAttribute('data-gdrive-id', newId);
+                imgEl.style.display = 'block';
+                imgEl.src = `https://drive.google.com/thumbnail?id=${newId}&sz=w200`;
+                enqueueDriveImageProxy(newId);
               }
             }
-            document.querySelectorAll('[data-icon-key]').forEach(btn => {
-              const key = btn.getAttribute('data-icon-key');
-              const matchedUrl = json.imageLinks[key];
-              const imgEl = btn.querySelector('img');
-              if (matchedUrl && imgEl) {
-                const newId = extractDriveId(matchedUrl);
-                if (newId) {
-                  imgEl.setAttribute('data-gdrive-id', newId);
-                  imgEl.style.display = 'block';
-                  imgEl.src = `https://drive.google.com/thumbnail?id=${newId}&sz=w200`;
-                  enqueueDriveImageProxy(newId);
-                }
-              }
-            });
-          }
+          });
 
           initFilters();
           applyFilters();
           if (showManualToast) showToast(`已同步最新鑑定卡目錄（共 ${cards.length} 款）！`);
+        } else {
+          throw new Error((json && json.message) || '試算表未回傳商品資料');
         }
       } catch (err) {
-        console.warn('Background catalog fetch skipped:', err);
-        if (showManualToast) showToast('同步失敗，請檢查網路或 Apps Script 部署權限', true);
+        console.warn('Cloud catalog fetch error:', err);
+        if (badgeEl) {
+          badgeEl.className = 'flex items-center gap-1.5 text-[10px] sm:text-[11px] text-red-400 font-semibold leading-tight mt-0.5 truncate';
+          badgeEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-400 shrink-0"></span><span class="truncate">雲端連線失敗：${err.message}</span>`;
+        }
+        if (showManualToast) showToast(`同步失敗：${err.message}`, true);
       } finally {
         if (syncIcon) syncIcon.classList.remove('animate-spin');
       }
